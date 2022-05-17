@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "List of all products";
+}
+
+
+
+
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-3 ">
+            <div class="col-12 border p-2 mb-4 box-shadow">
+                <img src="@product.ImgUrl" width="100%"/>
+                <div class="">
+                    <h6>@product.Brand</h6>
+                    <h5>@product.Model</h5>
+                    <p>$ @product.Price</p>
+                </div>
+            </div>
+            
+            
+        </div>
+    }
+</div>
