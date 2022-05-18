@@ -70,5 +70,49 @@ namespace Oranges_ASPNet.Controllers
             await _productService.UpdateAsync(id, product);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await _productService.GetProductsByIdAsync(id);
+            if (product == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var productToDelete = await _productService.GetProductsByIdAsync(id);
+            if (productToDelete != null)
+            {
+                await _productService.DeleteAsync(id);
+                return RedirectToAction("Index");
+            }
+            return View("NotFound");
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            var brand = await _productService.GetBrandDropdownValueAsync();
+            ViewBag.Brand = new SelectList(brand, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ProductViewModel product)
+        {
+            if (!ModelState.IsValid)
+            {
+                var brand = await _productService.GetBrandDropdownValueAsync();
+                ViewBag.Brand = new SelectList(brand, "Id", "Name");
+                return View(product);
+            }
+            await _productService.AddAsync(product);
+            return View("Index");
+
+        }
     }
 }
