@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Oranges_ASPNet.Data.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using System.Xml.Linq;
 
-namespace Oranges_ASPNet.Models
+namespace Oranges_ASPNet.Models.ViewModel
 {
-    public class Product
+    public class ProductViewModel
     {
         [Key]
         public int Id { get; set; }
@@ -26,20 +28,9 @@ namespace Oranges_ASPNet.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        [JsonIgnore]
-        public Brand Brand { get; set; }
-
         [Display(Name = "Select brand")]
         [Required(ErrorMessage = "brand is required")]
-        [ForeignKey(nameof(BrandId))]
         public int BrandId { get; set; }
-
-        [JsonIgnore]
-        public ProductStock Stock { get; set; }
-
-
-
-
 
 
     }

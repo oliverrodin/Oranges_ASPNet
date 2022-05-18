@@ -1,0 +1,47 @@
+﻿@model Product
+
+@{
+	ViewData["Title"] = "Details";
+
+}
+
+<div class="row">
+	<div class="col-md-8 offset-2">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col">
+						<left>
+							<h4>Details about: @Model.Model</h4>
+						</left>
+					</div>
+				</div>
+				<div>
+					<hr />
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<img src="@Model.ImgUrl" width="100%" />
+					</div>
+					<div class="col-md-6">
+						<p class="card-text">
+							<b>Brand: </b> @Model.Brand.Name
+						</p>
+						<p class="card-text">
+							<b>Model name: </b> @Model.Model
+						</p>
+						<p class="card-text">
+							<b>Description: </b> @Model.Description
+						</p>
+						<p class="card-text">
+							<b>Category: </b> @Model.Category
+						</p>
+						<p class="card-text">
+							<b>Price: </b> $@Model.Price
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
