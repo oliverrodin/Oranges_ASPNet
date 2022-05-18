@@ -3,7 +3,7 @@
     public enum ProductBrand
     {
         PeakDesign = 1,
-        Samsonite,
+        Rimowa,
         LevelEight,
         Minaal,
         Wandrd,

@@ -13,7 +13,7 @@ namespace Oranges_ASPNet.Data.Services.ProductService
             _context = context;
         }
         public async Task<List<Product>> GetAllProductsAsync() => 
-            await _context.Products.ToListAsync();
+            await _context.Products.Include(b => b.Brand).ToListAsync();
         
 
         public Task<Product> GetAllProductsAsync(int id)

@@ -8,7 +8,6 @@ namespace Oranges_ASPNet.Models
         public int Id { get; set; }
 
         public string ImgUrl { get; set; } = string.Empty;
-        public ProductBrand Brand { get; set; }
         public string Model { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public ProductCategory Category { get; set; }
@@ -17,6 +16,9 @@ namespace Oranges_ASPNet.Models
         public decimal Price { get; set; }
 
 
+        public Brand Brand { get; set; }
+        [ForeignKey(nameof(BrandId))]
+        public int BrandId { get; set; }
         public ProductStock Stock { get; set; }
         
         
