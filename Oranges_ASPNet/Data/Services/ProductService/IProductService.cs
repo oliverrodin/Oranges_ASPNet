@@ -7,7 +7,7 @@ namespace Oranges_ASPNet.Data.Services.ProductService
     {
         Task<List<Product>> GetAllProductsAsync();
         Task<Product> GetProductsByIdAsync(int id);
-        Task AddAsync(Product product);
+        Task AddAsync(ProductViewModel product);
         Task UpdateAsync(int id, ProductViewModel product);
         Task DeleteAsync(int id);
         Task<List<Brand>> GetBrandDropdownValueAsync();

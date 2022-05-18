@@ -24,9 +24,21 @@ namespace Oranges_ASPNet.Data.Services.ProductService
 
         }
 
-        public Task AddAsync(Product product)
+        public async Task AddAsync(ProductViewModel product)
         {
-            throw new NotImplementedException();
+            var newProduct = new Product()
+            {
+                Id = product.Id,
+                Model = product.Model,
+                Description = product.Description,
+                BrandId = product.BrandId,
+                Price = product.Price,
+                Category = product.Category,
+                ImgUrl = product.ImgUrl,
+            };
+
+            await _context.Products.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(int id, ProductViewModel product)
@@ -71,9 +83,14 @@ namespace Oranges_ASPNet.Data.Services.ProductService
             //await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<Brand>> GetBrandDropdownValueAsync()
