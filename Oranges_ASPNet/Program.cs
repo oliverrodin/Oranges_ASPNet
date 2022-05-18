@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Oranges_ASPNet.Data.Context;
+using Oranges_ASPNet.Data.Services.BrandService;
 using Oranges_ASPNet.Data.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
 
 var app = builder.Build();
 

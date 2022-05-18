@@ -11,8 +11,8 @@ using Oranges_ASPNet.Data.Context;
 namespace Oranges_ASPNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220518073307_first init")]
-    partial class firstinit
+    [Migration("20220518142149_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,18 @@ namespace Oranges_ASPNet.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -43,36 +55,57 @@ namespace Oranges_ASPNet.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "San Francisco, 2325 3rd St",
+                            Country = "USA",
+                            LogoUrl = "https://cdn.shopify.com/s/files/1/2986/1172/t/6/assets/headerlogo-10.svg?v=176056868021860541011535753837",
                             Name = "Peak Design"
                         },
                         new
                         {
                             Id = 2,
+                            Address = "Pohjoisesplanadi 31",
+                            Country = "Finland",
+                            LogoUrl = "https://www.rimowa.com/on/demandware.static/-/Library-Sites-RimowaSharedLibrary/default/dwc27c7ee1/images/rim-logo-footer.svg",
                             Name = "Rimowa"
                         },
                         new
                         {
                             Id = 3,
+                            Address = "New York 1234",
+                            Country = "USA",
+                            LogoUrl = "https://cdn.shopify.com/s/files/1/0029/3404/6831/files/6557dada9ef6da560b32c369936db50d_160x@2x.png?v=1538020561",
                             Name = "Level 8"
                         },
                         new
                         {
                             Id = 4,
+                            Address = "Beaverton",
+                            Country = "New Zealand",
+                            LogoUrl = "https://cdn.shopify.com/s/files/1/0281/4984/files/minaal-wordmark-logo_140x@2x.png?v=1642373413",
                             Name = "Minaal"
                         },
                         new
                         {
                             Id = 5,
+                            Address = "Clinton Street",
+                            Country = "USA",
+                            LogoUrl = "https://cdn.shopify.com/s/files/1/0051/0368/1570/files/WANDRD_Logo_410x.png?v=1552584995",
                             Name = "Wandrd"
                         },
                         new
                         {
                             Id = 6,
+                            Address = "George Town 1",
+                            Country = "USA",
+                            LogoUrl = "https://cdn.shopify.com/s/files/1/0104/4630/7364/files/Boundary_Supply_Logo_320x.png?v=1641925041",
                             Name = "Boundary Supply"
                         },
                         new
                         {
                             Id = 7,
+                            Address = "425 Smith Street",
+                            Country = "USA",
+                            LogoUrl = "https://storage.googleapis.com/tapcart-150607.appspot.com/12ac4f59f653659f45fac29fbeff088b_AppIconjpg.jpeg",
                             Name = "Alpaka"
                         });
                 });

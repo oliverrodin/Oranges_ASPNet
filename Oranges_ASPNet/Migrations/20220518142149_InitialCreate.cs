@@ -14,7 +14,10 @@ namespace Oranges_ASPNet.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,16 +70,16 @@ namespace Oranges_ASPNet.Migrations
 
             migrationBuilder.InsertData(
                 table: "Brands",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Address", "Country", "LogoUrl", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Peak Design" },
-                    { 2, "Rimowa" },
-                    { 3, "Level 8" },
-                    { 4, "Minaal" },
-                    { 5, "Wandrd" },
-                    { 6, "Boundary Supply" },
-                    { 7, "Alpaka" }
+                    { 1, "San Francisco, 2325 3rd St", "USA", "https://cdn.shopify.com/s/files/1/2986/1172/t/6/assets/headerlogo-10.svg?v=176056868021860541011535753837", "Peak Design" },
+                    { 2, "Pohjoisesplanadi 31", "Finland", "https://www.rimowa.com/on/demandware.static/-/Library-Sites-RimowaSharedLibrary/default/dwc27c7ee1/images/rim-logo-footer.svg", "Rimowa" },
+                    { 3, "New York 1234", "USA", "https://cdn.shopify.com/s/files/1/0029/3404/6831/files/6557dada9ef6da560b32c369936db50d_160x@2x.png?v=1538020561", "Level 8" },
+                    { 4, "Beaverton", "New Zealand", "https://cdn.shopify.com/s/files/1/0281/4984/files/minaal-wordmark-logo_140x@2x.png?v=1642373413", "Minaal" },
+                    { 5, "Clinton Street", "USA", "https://cdn.shopify.com/s/files/1/0051/0368/1570/files/WANDRD_Logo_410x.png?v=1552584995", "Wandrd" },
+                    { 6, "George Town 1", "USA", "https://cdn.shopify.com/s/files/1/0104/4630/7364/files/Boundary_Supply_Logo_320x.png?v=1641925041", "Boundary Supply" },
+                    { 7, "425 Smith Street", "USA", "https://storage.googleapis.com/tapcart-150607.appspot.com/12ac4f59f653659f45fac29fbeff088b_AppIconjpg.jpeg", "Alpaka" }
                 });
 
             migrationBuilder.InsertData(

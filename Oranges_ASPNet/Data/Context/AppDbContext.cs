@@ -20,13 +20,67 @@ namespace Oranges_ASPNet.Data.Context
         {
             modelBuilder.Entity<Brand>()
                 .HasData(
-                    new Brand { Id = 1, Name = "Peak Design"},
-                    new Brand { Id = 2, Name = "Rimowa"},
-                    new Brand { Id = 3, Name = "Level 8"},
-                    new Brand { Id = 4, Name = "Minaal"},
-                    new Brand { Id = 5, Name = "Wandrd"},
-                    new Brand { Id = 6, Name = "Boundary Supply"},
-                    new Brand { Id = 7, Name = "Alpaka"}
+                    new Brand
+                    {
+                        Id = 1, 
+                        Name = "Peak Design",
+                        LogoUrl = "https://cdn.shopify.com/s/files/1/2986/1172/t/6/assets/headerlogo-10.svg?v=176056868021860541011535753837",
+                        Country = "USA",
+                        Address = "San Francisco, 2325 3rd St"
+                    },
+                    new Brand
+                    {
+                        Id = 2, 
+                        Name = "Rimowa",
+                        LogoUrl = "https://www.rimowa.com/on/demandware.static/-/Library-Sites-RimowaSharedLibrary/default/dwc27c7ee1/images/rim-logo-footer.svg",
+                        Country = "Finland",
+                        Address = "Pohjoisesplanadi 31"
+
+                    },
+                    new Brand
+                    {
+                        Id = 3, 
+                        Name = "Level 8",
+                        LogoUrl = "https://cdn.shopify.com/s/files/1/0029/3404/6831/files/6557dada9ef6da560b32c369936db50d_160x@2x.png?v=1538020561",
+                        Country = "USA",
+                        Address = "New York 1234"
+
+                    },
+                    new Brand
+                    {
+                        Id = 4, 
+                        Name = "Minaal",
+                        LogoUrl = "https://cdn.shopify.com/s/files/1/0281/4984/files/minaal-wordmark-logo_140x@2x.png?v=1642373413",
+                        Country = "New Zealand",
+                        Address = "Beaverton"
+
+                    },
+                    new Brand
+                    {
+                        Id = 5,
+                        Name = "Wandrd",
+                        LogoUrl = "https://cdn.shopify.com/s/files/1/0051/0368/1570/files/WANDRD_Logo_410x.png?v=1552584995",
+                        Country = "USA",
+                        Address = "Clinton Street"
+
+                    },
+                    new Brand
+                    {
+                        Id = 6, 
+                        Name = "Boundary Supply",
+                        LogoUrl = "https://cdn.shopify.com/s/files/1/0104/4630/7364/files/Boundary_Supply_Logo_320x.png?v=1641925041",
+                        Country = "USA",
+                        Address = "George Town 1"
+
+                    },
+                    new Brand 
+                    { 
+                        Id = 7, 
+                        Name = "Alpaka",
+                        LogoUrl = "https://storage.googleapis.com/tapcart-150607.appspot.com/12ac4f59f653659f45fac29fbeff088b_AppIconjpg.jpeg",
+                        Country = "USA",
+                        Address = "425 Smith Street"
+                    }
                     );
 
             modelBuilder.Entity<Product>()
