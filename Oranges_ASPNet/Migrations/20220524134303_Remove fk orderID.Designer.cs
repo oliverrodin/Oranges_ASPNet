@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oranges_ASPNet.Data.Context;
 
@@ -10,9 +11,10 @@ using Oranges_ASPNet.Data.Context;
 namespace Oranges_ASPNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220524134303_Remove fk orderID")]
+    partial class RemovefkorderID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,11 +135,8 @@ namespace Oranges_ASPNet.Migrations
 
             modelBuilder.Entity("Oranges_ASPNet.Models.OrderDetails", b =>
                 {
-                    b.Property<int>("OrderDetailsId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("Id")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailsId"), 1L, 1);
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
@@ -151,11 +150,9 @@ namespace Oranges_ASPNet.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderDetailsId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -633,15 +630,15 @@ namespace Oranges_ASPNet.Migrations
 
             modelBuilder.Entity("Oranges_ASPNet.Models.OrderDetails", b =>
                 {
-                    b.HasOne("Oranges_ASPNet.Models.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
+                    b.HasOne("Oranges_ASPNet.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Oranges_ASPNet.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+                    b.HasOne("Oranges_ASPNet.Models.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

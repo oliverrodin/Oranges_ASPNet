@@ -6,14 +6,14 @@ namespace Oranges_ASPNet.Models
     public class OrderDetails
     {
         [Key]
-        public int Id { get; set; }
+        public int OrderDetailsId { get; set; }
         public int Amount { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
-
-        public int ProductId { get; set; }
         [ForeignKey("Id")]
+        public int ProductId { get; set; }
+        
         public virtual Product Product { get; set; }
 
         

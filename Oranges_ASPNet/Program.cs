@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Oranges_ASPNet.Data.Context;
+using Oranges_ASPNet.Data.Services;
 using Oranges_ASPNet.Data.Services.BrandService;
+using Oranges_ASPNet.Data.Services.OrderService;
 using Oranges_ASPNet.Data.Services.ProductService;
 using Oranges_ASPNet.Models;
 
@@ -22,6 +24,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+builder.Services.AddScoped<IOrdersService, OrdersService>();
 
 builder.Services.AddSession();
 

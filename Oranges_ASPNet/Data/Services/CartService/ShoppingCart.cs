@@ -50,7 +50,7 @@ namespace Oranges_ASPNet.Models
         {
             var shoppingCartItem = _context.ShoppingCartItems.FirstOrDefault(n => n.Product.Id == product.Id && n.ShoppingCartId == ShoppingCartId);
 
-            if (shoppingCartItem == null)
+            if (shoppingCartItem != null)
             {
                 if (shoppingCartItem.Amount > 1)
                 {
@@ -70,6 +70,11 @@ namespace Oranges_ASPNet.Models
 
         public decimal GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Product.Price * n.Amount).Sum();
 
-
+        public async Task ClearShoppingCartAsync()
+        {
+            var items = await _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).ToListAsync();
+            _context.ShoppingCartItems.RemoveRange(items);
+            await _context.SaveChangesAsync();
+        }
     }
 }
