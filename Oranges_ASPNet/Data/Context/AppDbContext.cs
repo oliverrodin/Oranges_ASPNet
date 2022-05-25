@@ -18,6 +18,11 @@ namespace Oranges_ASPNet.Data.Context
         public DbSet<ProductStock> ProductStocks { get; set; }
         public DbSet<Brand> Brands { get; set; }
 
+        //Orders tables
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set;}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Brand>()
