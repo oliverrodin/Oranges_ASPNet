@@ -12,7 +12,9 @@ namespace Oranges_ASPNet.Data.Services.ProductService
         Task DeleteAsync(int id);
         Task<List<Brand>> GetBrandDropdownValueAsync();
 
-        
+        Task UpdateProductStock(int id, int quantity);
+
+
 
     }
 }

@@ -15,7 +15,9 @@ namespace Oranges_ASPNet.Data.Services.ProductService
             _context = context;
         }
         public async Task<List<Product>> GetAllProductsAsync() =>
-            await _context.Products.Include(b => b.Brand).ToListAsync();
+            await _context.Products.Include(b => b.Brand)
+                .Include(x => x.Stock)
+                .ToListAsync();
 
 
         public async Task<Product> GetProductsByIdAsync(int id)
@@ -96,6 +98,18 @@ namespace Oranges_ASPNet.Data.Services.ProductService
         public async Task<List<Brand>> GetBrandDropdownValueAsync()
         {
             return await _context.Brands.OrderBy(b => b.Name).ToListAsync();
+        }
+
+        public async Task UpdateProductStock(int id, int quantity)
+        {
+            var productStock = await _context.ProductStocks.FirstOrDefaultAsync(x => x.ProductId == id);
+
+            if (productStock != null)
+            {
+                productStock.Quantity -= quantity;
+            }
+
+            await _context.SaveChangesAsync();
         }
     }
 }

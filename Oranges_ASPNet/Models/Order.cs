@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Oranges_ASPNet.Models
 {
@@ -14,6 +15,9 @@ namespace Oranges_ASPNet.Models
         [Display(Name = "Name")]
         [StringLength(100, ErrorMessage = "Name is required")]
         public string UserId { get; set; }
+
+        [ForeignKey(nameof(UserId))]
+        public ApplicationUser User { get; set; }
 
         public List<OrderDetails> OrderDetails { get; set; }
        
