@@ -36,16 +36,13 @@
                                 </div>
                             </li>
                         }
+                    </ul>
 
+                    <partial name="_Identity"/>
+                    
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
-
-                        
-                    </ul>
-                    
-                    <partial name="_Identity"/>
-
 
                 </div>
             </div>
