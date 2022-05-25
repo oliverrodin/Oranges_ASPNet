@@ -17,6 +17,7 @@
                         <th>@Html.DisplayNameFor(model => model.BrandId)</th>
                         <th>@Html.DisplayNameFor(model => model.Model)</th>
                         <th>@Html.DisplayNameFor(model => model.Category)</th>
+                        <th>@Html.DisplayNameFor(model => model.Stock.Quantity)</th>
                         <th>Actions</th>
 
                     </tr>
@@ -36,6 +37,9 @@
                             </td>
                             <td class="align-middle">
                                 @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.Stock.Quantity)
                             </td>
 
                             <td class="align-middle">
