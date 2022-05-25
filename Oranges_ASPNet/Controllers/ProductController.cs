@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Oranges_ASPNet.Data.Services.ProductService;
+using Oranges_ASPNet.Data.Static;
 using Oranges_ASPNet.Models;
 using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -14,6 +17,8 @@ namespace Oranges_ASPNet.Controllers
         {
             _productService = productService;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetAllProductsAsync();
@@ -26,6 +31,7 @@ namespace Oranges_ASPNet.Controllers
             return View(products);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var product = await _productService.GetProductsByIdAsync(id);
