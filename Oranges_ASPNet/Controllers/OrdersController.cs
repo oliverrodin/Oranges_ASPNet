@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Hosting;
 using Oranges_ASPNet.Data.Services;
 using Oranges_ASPNet.Data.Services.ProductService;
 using Oranges_ASPNet.Models;
@@ -71,6 +72,10 @@ namespace Oranges_ASPNet.Controllers
             string userEmailAdress = User.FindFirstValue(ClaimTypes.Email);
 
             await _orderService.StoreOrderAsync(items, userId, userEmailAdress);
+            foreach (var item in items)
+            {
+                await _productService.UpdateProductStock(item.Product.Id, item.Amount);
+            }
             await _shoppingCart.ClearShoppingCartAsync();
 
             return View("OrderCompleted");

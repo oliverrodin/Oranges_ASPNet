@@ -37,6 +37,9 @@ namespace Oranges_ASPNet.Models
         [JsonIgnore]
         public ProductStock Stock { get; set; }
 
+        public int ProductCampaignId { get; set; }
+        public ProductCampaign ProductCampaign { get; set; }
+
 
 
 
