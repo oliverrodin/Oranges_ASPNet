@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Hosting;
 using Oranges_ASPNet.Data.Services;
@@ -8,6 +9,7 @@ using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IProductService _productService;

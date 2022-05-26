@@ -15,5 +15,6 @@ namespace Oranges_ASPNet.Models
         
         public List<Product> Product { get; set; }
 
+
     }
 }

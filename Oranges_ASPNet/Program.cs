@@ -11,6 +11,7 @@ using Oranges_ASPNet.Data;
 using Oranges_ASPNet.Data.Context;
 using Oranges_ASPNet.Data.Services;
 using Oranges_ASPNet.Data.Services.BrandService;
+using Oranges_ASPNet.Data.Services.CampaignService;
 using Oranges_ASPNet.Data.Services.OrderService;
 using Oranges_ASPNet.Data.Services.ProductService;
 using Oranges_ASPNet.Data.Services.ProductStockService;
@@ -32,6 +33,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IProductStockService, ProductStockService>();
+builder.Services.AddScoped<ICampaignService, CampaignService>();
 
 builder.Services.AddSession();
 

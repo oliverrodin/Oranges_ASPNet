@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ProductCampaign>
+
+@{
+    ViewData["Title"] = "List of all campaigns";
+}
+
+@if (!@Model.Any())
+{
+    <div class="row">
+        <div class="col-md-6 offset-3 alert alert-warning text-center">
+            <h2>No active campaigns!</h2>
+            <p>Press the button below to create new campaign.</p>
+            <hr />
+            <p>
+                <a asp-controller="Campaign" asp-action="Create" class="btn btn-outline-secondary"><i class="bi bi-plus-circle"></i> Create</a>
+            </p>
+        </div>
+    </div>
+}
+else
+{
+       
+}

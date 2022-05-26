@@ -17,7 +17,11 @@
 					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
-
+                    <div class="form-floating mb-3">
+                        <input type="hidden" asp-for="ImgUrl" class="form-control" placeholder="@Html.DisplayNameFor(model => model.ImgUrl)" />
+                        <label asp-for="ImgUrl"></label>
+                        <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                    </div>
 					<div class="form-floating mb-3">
 						<input asp-for="Brand" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Brand)" readonly/>
 						<label asp-for="Brand"></label>

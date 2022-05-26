@@ -31,7 +31,7 @@ namespace Oranges_ASPNet.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filteredResult = products.Where(p => p.Model.Contains(searchString) || p.Brand.Name.Contains(searchString)).ToList();
+                var filteredResult = products.Where(p => p.Model.ToLower().Contains(searchString.ToLower()) || p.Brand.Name.ToLower().Contains(searchString.ToLower())).ToList();
                 return View("Index", filteredResult);
             }
 

@@ -33,9 +33,24 @@
 						<p class="card-text">
 							<b>Description: </b> @Model.Description
 						</p>
-						<p class="card-text">
-							<b>Category: </b> @Model.Category
-						</p>
+                        <p class="card-text">
+                            <b>Category: </b> @Model.Category
+                        </p>
+                        <p class="card-text">
+                            <b>In stock: </b>
+                            @if (@Model.Stock.Quantity > 5)
+                            {
+								<span class="alert alert-success p-0">More than 5...</span>
+                            }
+                            else if (@Model.Stock.Quantity > 0)
+                            {
+                                <span class="alert alert-primary p-0">Less than 5...</span>
+                            }
+                            else
+                            {
+                                <span class="alert alert-danger p-0">Out of stock</span>
+                            }
+                        </p>
 						<p class="card-text">
 							<b>Price: </b> $@Model.Price
 						</p>
@@ -45,7 +60,15 @@
 			<div class="card-footer">
                 <div class="form-group align-bottom">
                     <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
-                    <a class="btn btn-success text-white float-end" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus">Add to cart</i></a>
+					@if (@Model.Stock.Quantity == 0)
+					{
+					    <a class="btn btn-secondary text-white float-end"><i class="bi bi-cart-plus">Add to cart</i></a>
+					}
+					else
+					{
+					    <a class="btn btn-success text-white float-end" asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus">Add to cart</i></a>
+					}
+                        
                 </div>
             </div>
 		</div>

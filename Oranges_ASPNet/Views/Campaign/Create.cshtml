@@ -1,0 +1,82 @@
+﻿@using Oranges_ASPNet.Data.Enum
+@using Oranges_ASPNet.Models.ViewModel
+@model NewCampaignViewModel
+
+@{
+    ViewData["Title"] = "Create new campaign";
+}
+
+<div class="row text">
+    <div class="mb-3 col-md-8 offset-2">
+        <h1>Create new campaign</h1>
+    </div>
+    <div class="col-md-8 offset-2">
+        <div class="row">
+
+            <form class="row" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Name" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Name)" />
+                        <label asp-for="Name"></label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input  asp-for="StartDate" class="form-control" type="date" placeholder="@Html.DisplayNameFor(model => model.StartDate)" />
+                        <label asp-for="StartDate"></label>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" asp-for="EndDate" class="form-control" placeholder="@Html.DisplayNameFor(model => model.EndDate)" />
+                        <label asp-for="EndDate"></label>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Discount" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Discount)" />
+                        <label asp-for="Discount"></label>
+                        <span asp-validation-for="Discount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <select asp-for="ProductIds" class="form-select" style="height: 280px;"asp-items="ViewBag.Products" placeholder="@Html.DisplayNameFor(model => model.ProductIds)" 
+                                multiple>
+                        </select>
+                        <label asp-for="ProductIds"></label>
+                        <span asp-validation-for="ProductIds" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to list</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+@section Scripts{
+<script>
+
+    $(document).ready(function() {
+        var output = document.getElementById('PicturePreview');
+        output.src = $("#ImgUrl").val();
+    })
+
+
+
+    $("#ImgUrl").on("change", function() {
+        var output = document.getElementById('PicturePreview');
+        output.src = $(this).val();
+    })
+</script>
+}

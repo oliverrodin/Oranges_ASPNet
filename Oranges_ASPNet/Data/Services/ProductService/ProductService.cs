@@ -22,7 +22,8 @@ namespace Oranges_ASPNet.Data.Services.ProductService
 
         public async Task<Product> GetProductsByIdAsync(int id)
         {
-            return await _context.Products.Include(p => p.Brand).FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Products.Include(p => p.Brand)
+                .Include(p => p.Stock).FirstOrDefaultAsync(p => p.Id == id);
 
         }
 
