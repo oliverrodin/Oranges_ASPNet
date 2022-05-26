@@ -11,9 +11,7 @@ namespace Oranges_ASPNet.Models
         [Display(Name = "Email")]
         [StringLength(100, ErrorMessage = "Email is required")]
         public string Email { get; set; }
-        [Required]
-        [Display(Name = "Name")]
-        [StringLength(100, ErrorMessage = "Name is required")]
+        
         public string UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]

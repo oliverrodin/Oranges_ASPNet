@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProductStock>
+
+@{
+    ViewData["Title"] = "Product Inventory";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Inventory</h5>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Product.Brand)</th>
+                            <th>@Html.DisplayNameFor(model => model.Product.Model)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Product.Brand.Name
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Model)
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col">
+            <div class="card car">
+                <h5 class="card-header">Edit Quantity of Product</h5>
+                <div class="card-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ namespace Oranges_ASPNet.Models
         public int OrderDetailsId { get; set; }
         public int Amount { get; set; }
 
+        [Column(TypeName = "decimal (18, 2)")]
         public decimal Price { get; set; }
 
         [ForeignKey("Id")]
