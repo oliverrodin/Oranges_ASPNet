@@ -38,6 +38,11 @@
                         }
                     </ul>
 
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Product" asp-action="Filter" style="padding-right: 25px;">
+                        <input name="searchString" type="text" class="form-control" placeholder="Search for a bag...">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+
                     <partial name="_Identity"/>
                     
                     <ul class="navbar-nav">

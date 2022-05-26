@@ -85,7 +85,6 @@ namespace Oranges_ASPNet.Controllers
 
             }
 
-
             return View("RegisterCompleted");
         }
 

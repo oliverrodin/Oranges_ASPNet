@@ -25,6 +25,19 @@ namespace Oranges_ASPNet.Controllers
             return View(products);
         }
 
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var products = await _productService.GetAllProductsAsync();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = products.Where(p => p.Model.Contains(searchString) || p.Brand.Name.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+
+            return View(products);
+        }
+
         public async Task<IActionResult> List()
         {
             var products = await _productService.GetAllProductsAsync();
