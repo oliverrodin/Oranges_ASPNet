@@ -24,7 +24,7 @@ namespace Oranges_ASPNet.Controllers
             var products = await _productService.GetAllProductsAsync();
             return View(products);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
             var products = await _productService.GetAllProductsAsync();
