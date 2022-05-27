@@ -17,6 +17,7 @@ namespace Oranges_ASPNet.Data.Services.ProductService
         public async Task<List<Product>> GetAllProductsAsync() =>
             await _context.Products.Include(b => b.Brand)
                 .Include(x => x.Stock)
+                .Include(p => p.ProductCampaign)
                 .ToListAsync();
 
 
