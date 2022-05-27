@@ -45,6 +45,7 @@ namespace Oranges_ASPNet.Controllers
                 ViewBag.Products = new SelectList(products, "Id", "Model");
                 return View(campaign);
             }
+            await _campaignService.AddAsync(campaign.Id, campaign);
 
             return RedirectToAction("List");
         }

@@ -1,4 +1,5 @@
 ﻿using Oranges_ASPNet.Models;
+using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Data.Services.CampaignService
 {
@@ -6,6 +7,6 @@ namespace Oranges_ASPNet.Data.Services.CampaignService
     {
         Task<List<ProductCampaign>> GetAllCampaignsAsync();
         Task<ProductCampaign> GetCampaignByIdAsync(int id);
-        Task AddAsync(ProductCampaign campaign);
+        Task AddAsync(int id, NewCampaignViewModel campaign);
     }
 }
