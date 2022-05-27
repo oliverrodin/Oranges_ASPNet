@@ -6,25 +6,30 @@
 
 
 
+<partial name="_Hero"/>
 
+<div class="product-index-section">
+    <div class="row">
+        <h2 class="product-index-section-heading">All products</h2>
+    </div>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-sm-3 ">
+                <div class="col-12  p-2 mb-4 box-shadow">
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
 
-<div class="row">
-    @foreach (var product in Model)
-    {
-        <div class="col-sm-3 ">
-            <div class="col-12 border p-2 mb-4 box-shadow">
-                 <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
-
-                    <img src="@product.ImgUrl" width="100%"/>
-                 </a>
-                <div class="">
-                    <h6>@product.Brand.Name</h6>
-                    <h5>@product.Model</h5>
-                    <p>$ @product.Price</p>
+                        <img src="@product.ImgUrl" width="100%"/>
+                    </a>
+                    <div class="">
+                        <h6>@product.Brand.Name</h6>
+                        <h5>@product.Model</h5>
+                        <p>$ @product.Price</p>
+                    </div>
                 </div>
+
+
             </div>
-            
-            
-        </div>
-    }
+        }
+    </div>
 </div>

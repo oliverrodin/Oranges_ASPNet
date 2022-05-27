@@ -1,3 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 html {
   font-size: 14px;
 }
@@ -19,4 +30,40 @@ body {
 
 .form-inline {
     display: inline-block
+}
+
+
+
+.main-body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 30px;
+    
+}
+
+.product-index-section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-top: -20vh;
+    padding: 13rem 1rem;
+}
+
+.product-index-section-heading {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .2rem;
+    text-align: center;
+    padding-bottom: 2.5rem;
+}
+
+.back-color {
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    z-index: 100;
 }
