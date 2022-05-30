@@ -13,7 +13,7 @@ namespace Oranges_ASPNet.Models
         public string Zip { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
 
-       
-        public ApplicationUser ApplicationUser { get; set; }
+        
+        
     }
 }
