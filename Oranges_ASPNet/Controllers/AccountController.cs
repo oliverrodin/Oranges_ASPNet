@@ -24,9 +24,13 @@ namespace Oranges_ASPNet.Controllers
 
         public async Task<IActionResult> Users()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users.Include(u => u.Address).ToListAsync();
             return View(users);
         }
+
+        
+
+
 
         public IActionResult Login() => View(new LoginViewModel());
 
@@ -54,6 +58,8 @@ namespace Oranges_ASPNet.Controllers
             return View(model);
 
         }
+
+
 
         public IActionResult Register() => View(new RegisterViewModel());
 
@@ -88,12 +94,15 @@ namespace Oranges_ASPNet.Controllers
             return View("RegisterCompleted");
         }
 
+
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Product");
         }
+
 
 
         public IActionResult AccessDenied(string returnUrl)

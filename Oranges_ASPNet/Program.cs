@@ -1,4 +1,5 @@
 
+using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ using Oranges_ASPNet.Data.Services.CampaignService;
 using Oranges_ASPNet.Data.Services.OrderService;
 using Oranges_ASPNet.Data.Services.ProductService;
 using Oranges_ASPNet.Data.Services.ProductStockService;
+using Oranges_ASPNet.Data.Services.UserService;
 using Oranges_ASPNet.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,7 @@ builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IProductStockService, ProductStockService>();
 builder.Services.AddScoped<ICampaignService, CampaignService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddSession();
 

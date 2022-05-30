@@ -18,6 +18,7 @@ namespace Oranges_ASPNet.Data.Context
         public DbSet<ProductStock> ProductStocks { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<ProductCampaign> Campaigns { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         //Orders tables
         public DbSet<Order> Orders { get; set; }
