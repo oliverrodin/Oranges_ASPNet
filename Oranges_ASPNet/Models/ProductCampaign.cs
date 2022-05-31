@@ -14,7 +14,7 @@ namespace Oranges_ASPNet.Models
         public DateTime EndDate { get; set; }
         [Display(Name = "Discount (%)")]
         public int Discount { get; set; }
-        public List<Product> Product { get; set; }
+        public List<Product>? Product { get; set; }
 
 
     }

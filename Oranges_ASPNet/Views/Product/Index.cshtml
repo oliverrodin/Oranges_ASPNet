@@ -50,6 +50,7 @@
                                 <h6>@product.Brand.Name</h6>
                                 <h5>@product.Model</h5>
                                 <p>$@(product.Price - (product.Price * product.ProductCampaign.Discount / 100))</p>
+                                <p style="text-decoration:line-through; color: red;">$@product.Price</p>
                             </div>
                         </div>
 
@@ -69,8 +70,16 @@
         </div>
     </div>
     <div class="p-4"></div>
+
     <div class="row">
-        <h2 class="product-index-section-heading">All products</h2>
+        <h2 class="product-index-section-heading">
+            All products
+        </h2>
+        <form class="my-2 my-lg-0" asp-controller="Product" asp-action="Filter" style="width: 30%;">
+            <input name="searchString" type="text" class="form-control" placeholder="Search for a bag by name or brand..." aria-label="Bag name" aria-describedby="button-addon2">
+            <div class="p-1"></div>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+        </form>
     </div>
     <div class="row">
         @foreach (var product in Model)
@@ -79,7 +88,7 @@
                 <div class="col-12  p-2 mb-4 box-shadow">
                     <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
 
-                        <img src="@product.ImgUrl" width="100%"/>
+                        <img src="@product.ImgUrl" width="100%" />
                     </a>
                     <div class="">
                         <h6>@product.Brand.Name</h6>
