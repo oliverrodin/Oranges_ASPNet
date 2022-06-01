@@ -79,7 +79,7 @@
                                         <a asp-controller="Orders" asp-action="Details" class="text-success ">View order</a>
                                     </div>
                                     <div class="col-3 m-auto">
-                                        <p> * in progress</p>
+                                        <p>@order.OrderDate.Date.ToShortDateString()</p>
                                     </div>
                                     <div class="col-6 m-auto">
                                         @foreach (var item in order.OrderDetails)

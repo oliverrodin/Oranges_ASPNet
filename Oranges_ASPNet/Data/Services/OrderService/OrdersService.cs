@@ -32,7 +32,8 @@ namespace Oranges_ASPNet.Data.Services.OrderService
             var order = new Order
             {
                 UserId = userId,
-                Email = userEmailAdress
+                Email = userEmailAdress,
+                OrderDate = DateTime.Now
 
             };
             await _context.Orders.AddAsync(order);

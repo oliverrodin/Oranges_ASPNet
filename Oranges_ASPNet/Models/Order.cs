@@ -11,6 +11,8 @@ namespace Oranges_ASPNet.Models
         [Display(Name = "Email")]
         [StringLength(100, ErrorMessage = "Email is required")]
         public string Email { get; set; }
+
+        public DateTime OrderDate { get; set; }
         
         public string UserId { get; set; }
 
