@@ -31,7 +31,8 @@ namespace Oranges_ASPNet.Data
                         FullName = "Admin User",
                         UserName = "admin-user",
                         Email = adminUserEmail,
-                        EmailConfirmed = true
+                        EmailConfirmed = true,
+                        AddressId = 1
 
                     };
                     await userManager.CreateAsync(newAdminUser, "Coding@1234?");
@@ -42,12 +43,14 @@ namespace Oranges_ASPNet.Data
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
                 if (appUser == null)
                 {
+                    
                     var newAppUser = new ApplicationUser()
                     {
                         FullName = "Application User",
                         UserName = "app-user",
                         Email = appUserEmail,
-                        EmailConfirmed = true
+                        EmailConfirmed = true,
+                        AddressId = 2
 
                     };
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");

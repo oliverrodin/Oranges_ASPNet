@@ -6,7 +6,7 @@
     ViewData["Title"] = "Create";
 }
 
-<div class="row text">
+<div class="section-grey">
     <div class="mb-3 col-md-8 offset-2">
         <h1>Create a new Product</h1>
     </div>
@@ -48,6 +48,11 @@
                         <span asp-validation-for="Category" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-3">
+                        <input asp-for="Quantity" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Quantity)" />
+                        <label asp-for="Quantity"></label>
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input asp-for="Price" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Price)" />
                         <label asp-for="Price"></label>
                         <span asp-validation-for="Price" class="text-danger"></span>
@@ -63,12 +68,6 @@
                     <img class="border-info" width="100%" id="PicturePreview" />
                 </div>
             </div>
-
-
-
-
-
-
         </div>
     </div>
 

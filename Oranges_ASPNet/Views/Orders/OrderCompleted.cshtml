@@ -1,8 +1,11 @@
-﻿<div class="row">
-	<div class="col-md-6 offset-3 alert alert-success text-center">
+﻿@using System.Security.Claims
+<div class="section-grey">
+	<div class="col-md-6 offset-3 alert back-color text-center text-white">
 		<h2>Order completed</h2>
 		<p>You can check your orders in your profile</p>
 		<hr />
-		<p>Thank you!</p>
+        <p>Thank you!</p>
+		<div calss="p-2"></div>
+		<a asp-controller="User" asp-action="Index" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="btn btn-light">Profile Page</a>
 	</div>
 </div>

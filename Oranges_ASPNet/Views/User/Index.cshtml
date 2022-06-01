@@ -5,119 +5,156 @@
 
 
 
-<div class="section-green">
-    <div class="row">
-        <div class="col-md-10 offset-1">
-            @if (Model.AddressId == null)
-            {
-                        <div class="row">
-                            <div class="col-md-6 offset-3 alert alert-warning text-center">
-                                <h2>No active campaigns!</h2>
-                                <p>Press the button below to create new campaign.</p>
-                                <hr />
-                                <p>
-                                    <a asp-controller="User" asp-action="Create"  class="btn btn-outline-secondary"><i class="bi bi-plus-circle"></i> Create</a>
-                                </p>
-                            </div>
-                        </div>
-            }
-            else
-            {
-                        <div class="text-white">
-                            <h1>Hello @Model.FullName</h1>
-                        </div>
-                        <h5 class="text-white">Logged in as: @Model.Email</h5>
-                        <hr class="border-white"/>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.FirstName" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.FirstName)" readonly/>
+
+<div class="row">
+    <div class="col-md-12 ">
+
+        <div class="row back-color">
+            <div class="p-5">
+                <div class="text-light">
+                    <h1>@Model.FullName</h1>
+                    <h5>@Model.Email</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section-grey p-lg-5">
+
+
+            <div class="row">
+
+                <div class="col-4 ">
+                    <div class="mb-4">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="border border-dark p-3">
+                        <div class="form-floating mb-1 ">
+                            <input asp-for="Address.FirstName" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.FirstName)" readonly />
                             <label asp-for="Address.FirstName"></label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.LastName" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.LastName)" readonly/>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Address.LastName" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.LastName)" readonly />
                             <label asp-for="Address.LastName"></label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.Street" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.Street)" readonly/>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Email" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Email)" readonly />
+                            <label asp-for="Email"></label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input asp-for="PhoneNumber" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.PhoneNumber)" readonly />
+                            <label asp-for="PhoneNumber"></label>
+                        </div>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Address.Street" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.Street)" readonly />
                             <label asp-for="Address.Street"></label>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.Zip" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.Zip)" readonly/>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Address.Zip" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.Zip)" readonly />
                             <label asp-for="Address.Zip"></label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.City" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.City)" readonly/>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Address.City" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.City)" readonly />
                             <label asp-for="Address.City"></label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Address.Country" class="form-control" placeholder="@Html.DisplayNameFor(model => model.Address.Country)" readonly/>
+                        <div class="form-floating mb-1">
+                            <input asp-for="Address.Country" class="form-control border-0 bg-transparent" placeholder="@Html.DisplayNameFor(model => model.Address.Country)" readonly />
                             <label asp-for="Address.Country"></label>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-5">
-                    <div>
-                        <a asp-controller="User" asp-action="Edit" asp-route-id="@userManager.GetUserId(User)" class="btn btn-light float-end">Edit</a>
+
+                    <div class="mt-2">
+                        <a asp-controller="User" asp-action="Edit" asp-route-id="@userManager.GetUserId(User)" class="btn btn-dark float-end">Edit</a>
                     </div>
                 </div>
-                <div >
-                    <div>
-                        <h1 class="text-white">Recent Orders</h1>
+                <div class="col-8">
+                    <div class="mb-4">
+                        <div>
+                            <h1 class="text-body">Recent Orders</h1>
+                        </div>
                     </div>
-                </div>
-                <hr/>
-                        <table class="table text-white">
-                            <thead>
-                            <tr>
-                                <th>Order Id</th>
-                                <th>Items</th>
-                                @*<th>Total</th>*@
-                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+
+                    @foreach (var order in ViewBag.Orders)
+                    {
+                        <div class="row border border-dark p-4 mb-3">
+                            <div class="col-3 m-auto">
+                                <h4>Order @order.Id</h4>
+                                <a asp-controller="Orders" asp-action="Details" class="text-success ">View order</a>
+                            </div>
+                            <div class="col-3 m-auto">
+                                <p> * in progress</p>
+                            </div>
+                            <div class="col-6 m-auto">
+
+                                @foreach (var item in order.OrderDetails)
                                 {
-                                            <th>User</th>
+                                    <p class="float-end ">
+                                        <img style="height: 6rem" src="@item.Product.ImgUrl" />
+                                    </p>
+
                                 }
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach (var order in ViewBag.Orders)
-                            {
-                                        <tr>
-                                            <td class="align-middle">@order.Id</td>
-                                            <td class="align-middle">
-                                                <ul style="list-style-type:none">
-                                            @foreach (var item in order.OrderDetails)
-                                            {
-                                                                <li>
-                                                                    <div class="alert alert-info" role="alert">
-                                                                        <span class="badge bg-success">@item.Amount</span>[$@item.Price] - @item.Product.Model
-                                                                    </div>
-                                                                </li>
-                                            }
-                                                    <li></li>
-                                                </ul>
-                                            </td>
-                                            @*<td class="align-middle">
-                                                $@order.OrderDetails.Select(m => m.Product.Price * m.Amount).Sum()
-                                            </td>*@
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                    {
-                                                        <td class="align-middle"> @order.User.FullName </td>
-                                    }
-                                        </tr>
-                            }
-                            </tbody>
-                        </table>    
 
 
 
-            }
+                            </div>
+                        </div>
+                    }
+
+                    @*<table class="table text-white">
+                        <thead>
+                        <tr>
+                        <th>Order Id</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                        <th>User</th>
+                        }
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var order in ViewBag.Orders)
+                        {
+                        <tr>
+                        <td class="align-middle">@order.Id</td>
+                        <td class="align-middle">
+                        <ul style="list-style-type:none">
+                        @foreach (var item in order.OrderDetails)
+                        {
+                        <li>
+                        <div class="alert alert-info" role="alert">
+                        <span class="badge bg-success">@item.Amount</span>[$@item.Price] - @item.Product.Model
+                        </div>
+                        </li>
+                        }
+                        <li></li>
+                        </ul>
+                        </td>
+                        @*<td class="align-middle">
+                        $@order.OrderDetails.Select(m => m.Product.Price * m.Amount).Sum()
+                        </td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                        <td class="align-middle"> @order.User.FullName </td>
+                        }
+                        </tr>
+                        }
+                        </tbody>
+                        </table>*@
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
 
 
 
         </div>
     </div>
 </div>
-<div class="section-footer-gray"></div>

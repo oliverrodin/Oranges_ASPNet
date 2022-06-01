@@ -27,6 +27,32 @@ namespace Oranges_ASPNet.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Address>()
+                .HasData(
+                    new Address
+                    {
+                        AddressId = 1,
+                        FirstName = "Admin",
+                        LastName = "Bagtopia",
+                        Street = "Storgatan 23",
+                        City = "Hudiksvall",
+                        State = "Gävleborg",
+                        Zip = "82430",
+                        Country = "Sverige"
+                    },
+                    new Address
+                    {
+                        AddressId = 2,
+                        FirstName = "User",
+                        LastName = "Bagtopia",
+                        Street = "User street 23",
+                        City = "Hudiksvall",
+                        State = "Gävleborg",
+                        Zip = "82430",
+                        Country = "Sverige"
+                    }
+
+                );
             modelBuilder.Entity<Brand>()
                 .HasData(
                     new Brand

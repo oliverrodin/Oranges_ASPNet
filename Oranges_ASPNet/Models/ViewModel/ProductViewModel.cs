@@ -28,6 +28,10 @@ namespace Oranges_ASPNet.Models.ViewModel
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
+        [Display(Name = "Stock quantity")]
+        [Required(ErrorMessage = "Stock quantity is required")]
+        public int Quantity { get; set; }
+
         [Display(Name = "Select brand")]
         [Required(ErrorMessage = "brand is required")]
         public int BrandId { get; set; }

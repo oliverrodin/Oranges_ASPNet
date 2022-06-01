@@ -26,7 +26,7 @@ namespace Oranges_ASPNet.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        [JsonIgnore]
+        
         public Brand Brand { get; set; }
 
         [Display(Name = "Select brand")]
@@ -34,7 +34,7 @@ namespace Oranges_ASPNet.Models
         [ForeignKey(nameof(BrandId))]
         public int BrandId { get; set; }
 
-        [JsonIgnore]
+        
         public ProductStock Stock { get; set; }
 
         public int? ProductCampaignId { get; set; }

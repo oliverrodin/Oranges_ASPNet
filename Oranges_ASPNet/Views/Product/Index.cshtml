@@ -2,103 +2,49 @@
 
 @{
     ViewData["Title"] = "List of all products";
-    var i = 1;
 }
 
 
 
-<partial name="_Hero" />
-
-<div class="product-index-section">
-    <div class="row">
-        <h2 class="product-index-section-heading">Campaign</h2>
-    </div>
-    <div class="row">
-        <div id="carouselExampleIndicators" class="carousel carousel-dark slide w-25 m-auto" data-bs-ride="carousel">
-            <div>
-
-                @foreach (var product in Model)
-                {
-
-                    if (product.ProductCampaignId != null)
-                    {
-                        @*<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" aria-label="Slide @i"></button>*@
-                        i++;
-                    }
-                }
 
 
-
+<div class="section-grey">
+    <div class="container">
+        <div class="row">
+            <h2 class="product-index-section-heading m-auto">
+                All products
+            </h2>
+            <div class="d-inline">
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="Images/sale.png" class="d-block w-100 m-auto" alt="...">
-                </div>
-                @foreach (var product in Model)
-                {
-                    if (product.ProductCampaignId != null)
-                    {
-                        <div class="carousel-item">
-                            <div class="product-grid">
-                                <div class="product-image">
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="image">
-                                        <img src="@product.ImgUrl">
-                                    </a>
-                                    <span class="product-discount-label">-@product.ProductCampaign.Discount %</span>
-                                    <a asp-controller="Orders" asp-action="AddToCart" asp-route-id="@product.Id" class="add-to-cart">Add to Cart</a>
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="title"><a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">@product.Model</a></h3>
-                                    <div class="price">$@(product.Price - (product.Price * product.ProductCampaign.Discount / 100))
-                                        <span class="price-campaign">$@product.Price</span></div>
-                                </div>
-                            </div>
+            <form class="my-2 my-lg-0 m-auto d-flex" asp-controller="Product" asp-action="Filter" style="width: 50%;">
+                <input name="searchString" type="text" class="form-control d-inline-block" placeholder="Search for a bag by name or brand..." aria-label="Bag name" aria-describedby="button-addon2">
+                <div class="p-1"></div>
+                <button class="btn btn-outline-dark opacity-50 my-2 my-sm-0 d-inline" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+        <hr />
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-sm-3 ">
+                    <div class="col-12  p-2 mb-4 box-shadow">
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+
+                            <img src="@product.ImgUrl" width="100%" />
+                        </a>
+                        <div class="">
+                            <h6>@product.Brand.Name</h6>
+                            <h5>@product.Model</h5>
+                            <p>$ @product.Price</p>
                         </div>
-                    }
-                }
+                    </div>
 
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
+                </div>
+            }
         </div>
     </div>
 
-    <div class="row">
-        <h2 class="product-index-section-heading">
-            All products
-        </h2>
-        <form class="my-2 my-lg-0" asp-controller="Product" asp-action="Filter" style="width: 30%;">
-            <input name="searchString" type="text" class="form-control" placeholder="Search for a bag by name or brand..." aria-label="Bag name" aria-describedby="button-addon2">
-            <div class="p-1"></div>
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-        </form>
-    </div>
-    <div class="row">
-        @foreach (var product in Model)
-        {
-            <div class="col-sm-3 ">
-                <div class="col-12  p-2 mb-4 box-shadow">
-                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
-
-                        <img src="@product.ImgUrl" width="100%" />
-                    </a>
-                    <div class="">
-                        <h6>@product.Brand.Name</h6>
-                        <h5>@product.Model</h5>
-                        <p>$ @product.Price</p>
-                    </div>
-                </div>
-
-
-            </div>
-        }
-    </div>
 </div>
 
 

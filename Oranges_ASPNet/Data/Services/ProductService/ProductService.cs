@@ -43,6 +43,18 @@ namespace Oranges_ASPNet.Data.Services.ProductService
 
             await _context.Products.AddAsync(newProduct);
             await _context.SaveChangesAsync();
+
+            var addProductToStock = await _context.Products.OrderBy(p => p.Id).LastOrDefaultAsync();
+
+            var newProductStock = new ProductStock()
+            {
+                Quantity = product.Quantity,
+                ProductId = addProductToStock.Id
+            };
+
+            await _context.ProductStocks.AddAsync(newProductStock);
+            await _context.SaveChangesAsync();
+
         }
 
         public async Task UpdateAsync(int id, ProductViewModel product)
@@ -60,6 +72,7 @@ namespace Oranges_ASPNet.Data.Services.ProductService
                 item.Price = product.Price;
                 item.Category = product.Category;
                 item.ImgUrl = product.ImgUrl;
+                
 
                 await _context.SaveChangesAsync();
             }

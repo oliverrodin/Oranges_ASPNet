@@ -49,7 +49,7 @@ namespace Oranges_ASPNet.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Product");
+                        return RedirectToAction("Home", "Product");
                     }
                 }
             }
@@ -77,9 +77,20 @@ namespace Oranges_ASPNet.Controllers
 
             var newUser = new ApplicationUser()
             {
-                FullName = model.FullName,
+                FullName = $"{model.FirstName} {model.LastName}",
                 Email = model.EmailAddress,
-                UserName = model.EmailAddress
+                UserName = model.EmailAddress,
+                PhoneNumber = model.PhoneNumber,
+                Address = new Address()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Street = model.Street,
+                    Zip = model.Zip,
+                    City = model.City,
+                    State = model.State,
+                    Country = model.Country
+                }
             };
 
             var newUserResponse = await _userManager.CreateAsync(newUser, model.Password);
@@ -100,7 +111,7 @@ namespace Oranges_ASPNet.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("Home", "Product");
         }
 
 

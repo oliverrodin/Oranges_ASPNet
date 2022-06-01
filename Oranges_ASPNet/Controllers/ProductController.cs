@@ -17,6 +17,12 @@ namespace Oranges_ASPNet.Controllers
         {
             _productService = productService;
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> Home()
+        {
+            var products = await _productService.GetAllProductsAsync();
+            return View(products);
+        }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
