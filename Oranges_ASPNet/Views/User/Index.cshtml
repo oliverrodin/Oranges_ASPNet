@@ -79,7 +79,7 @@
                         <div class="row border border-dark p-4 mb-3">
                             <div class="col-3 m-auto">
                                 <h4>Order @order.Id</h4>
-                                <a asp-controller="Orders" asp-action="Details" class="text-success ">View order</a>
+                                <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" class="text-success ">View order</a>
                             </div>
                             <div class="col-3 m-auto">
                                 <p> * in progress</p>

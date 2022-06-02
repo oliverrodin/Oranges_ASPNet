@@ -126,7 +126,7 @@
                                     <div class="row p-3">
                                         <div class="col-3 m-auto">
                                             <h4>Order @order.Id</h4>
-                                            <a asp-controller="Orders" asp-action="Details" class="text-success ">View order</a>
+                                            <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" class="text-success ">View order</a>
                                         </div>
                                         <div class="col-2 m-auto">
                                             <p>@order.OrderDate.Date.ToShortDateString()</p>

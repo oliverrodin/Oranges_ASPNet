@@ -8,71 +8,82 @@
 <section class="text-center section-grey">
 	<div class="container">
 		<h3 class="mb-5">Contact us</h3>
-		<div class="row">
-			<div class="col-lg-5">
-				<fieldset>
-					<div id="googleMap" style="height:400px; width:100%;"></div>
-					<script>
-						function myMap() {
-							var myCenter = new google.maps.LatLng(61.72756684423322, 17.103533716399514);
-							var mapProp = { center: myCenter, zoom: 12, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
-							var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-							var marker = new google.maps.Marker({ position: myCenter });
-							marker.setMap(map);
-						}
-					</script>
+        <div class="row">
+            <div class="col mb-5">
+                 <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4 mb-md-0">
+                                    <div class="form-outline">
+                                        <input type="text" id="form3Example1" class="form-control" placeholder="First name"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <input type="email" id="form3Example2" class="form-control" placeholder="Email Address"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form3Example3" class="form-control" placeholder="Subject"/>
+                            </div>
+                            <div class="form-outline mb-1">
+                                <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message"></textarea>
+                            </div>
+                            <div class="text-center text-md-start">
+                                <button type="submit" class="btn btn-primary mb-5 mb-md-0 float-end">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <div id="googleMap" style="height: 400px; width: 100%;"></div>
+                        <script>
+                            function myMap() {
+                                var myCenter = new google.maps.LatLng(61.72756684423322, 17.103533716399514);
+                                var mapProp = { center: myCenter, zoom: 12, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                                var marker = new google.maps.Marker({ position: myCenter });
+                                marker.setMap(map);
+                            }
+                        </script>
 
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeYXR_4o3m9nPmpTFvIZK_WDAdYazgSAI&callback=myMap"></script>
-				</fieldset>
-			</div>
-			<div class="col-lg-6">
-				<form>
-					<div class="row">
-						<div class="col-md-9">
-							<div class="row mb-4">
-								<div class="col-md-6 mb-4 mb-md-0">
-									<div class="form-outline">
-										<input type="text" id="form3Example1" class="form-control" placeholder="First name" />
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-outline">
-										<input type="email" id="form3Example2" class="form-control" placeholder="Email Address" />
-									</div>
-								</div>
-							</div>
-							<div class="form-outline mb-4">
-								<input type="text" id="form3Example3" class="form-control" placeholder="Subject" />
-							</div>
-							<div class="form-outline mb-4">
-								<textarea class="form-control" id="form4Example3" rows="4" placeholder="Message"></textarea>
-							</div>
-							<div class="text-center text-md-start">
-								<button type="submit" class="btn btn-primary mb-5 mb-md-0">
-									Send
-								</button>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<ul class="list-unstyled" style="font-size: 16px">
-								<li>
-									<i class="bi bi-geo-alt text-primary"></i>
-									<p>Storgatan 23 82430 Hudiksvall</p>
-								</li>
-								<li>
-									<i class="bi bi-telephone-fill text-primary"></i>
-									<p>+ 01 234 567 89></p>
-								</li>
-								<li>
-									<i class="bi bi-envelope text-primary"></i>
-									<p>contact@bags.com</p>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeYXR_4o3m9nPmpTFvIZK_WDAdYazgSAI&callback=myMap"></script>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="row">
+                <div class="col">
+                    
+                        <ul class="list-unstyled" style="font-size: 16px">
+                            <li>
+                                <i class="bi bi-geo-alt text-primary"></i>
+                                <p>Storgatan 23 82430 Hudiksvall</p>
+                            </li>
+                            <li>
+                                <i class="bi bi-telephone-fill text-primary"></i>
+                                <p>+ 01 234 567 89></p>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope text-primary"></i>
+                                <p>contact@bags.com</p>
+                            </li>
+                        </ul>
+                    
+                </div>
+            </div>
+            <div class="col-lg-6">
+               
+            </div>
+        </div>
 	</div>
 </section>
 

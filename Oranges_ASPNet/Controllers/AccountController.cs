@@ -8,8 +8,7 @@ using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

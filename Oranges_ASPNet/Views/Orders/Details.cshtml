@@ -1,0 +1,133 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "Product Inventory";
+}
+
+<div class="section-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    
+                    <div class="card-header back-color">
+                        <div class="row">
+                            <div class="col-4 m-auto text-center">
+                                <img src="/Images/logo-white.png"/>
+                            </div>
+                            <div class="col-8">
+                                <h1 class="product-index-section-heading-white mb-0 pb-0">Bagtopia.com</h1>
+                                <h5 class="product-index-section-heading-white " style="font-size: 1.5rem; padding-left: 1rem;">Your bags online!</h5>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h2 class="text-center"><b>Hi @Model.User.FullName</b></h2>
+                            <h4 class="text-center">Your order is now delivered</h4>
+                            <div class="row">
+                                <div class="col border m-4 p-3">
+                                    <h2>Tracking information</h2>
+                                    <p class="mb-0">SB180863081</p>
+                                    <p class="mb-0">SB0100966435</p>
+                                </div>
+                                <div class="col border m-4 p-3">
+                                    <h2>Delivery Address</h2>
+                                    <p class="mb-0">@Model.User.Address.Street</p>
+                                    <p class="mb-0">@Model.User.Address.Zip</p>
+                                    <p class="mb-0">@Model.User.Address.City</p>
+                                    <p class="mb-0">@Model.User.Address.State</p>
+                                    <p class="mb-0">@Model.User.Address.Country</p>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Product id</th>
+                                            <th>Model</th>
+                                            <th></th>
+                                            <th>Amount</th>
+                                            <th>Price</th>
+                                            <th>Price sum</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var product in Model.OrderDetails)
+                                        {
+                                            <tr>
+                                                <td>@product.Product.Id</td>
+                                                <td>@product.Product.Model</td>
+                                                <td><img style="height: 3rem;" src="@product.Product.ImgUrl"/></td>
+                                                <td>@product.Amount</td>
+                                                <td>$@product.Product.Price</td>
+                                                <td>$@(product.Product.Price * product.Amount)</td>
+
+                                            </tr>
+                                        }
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="4"></td>
+                                            <td><b>Sum:</b></td>
+                                            <td> $@Model.OrderDetails.Select(m => m.Product.Price * m.Amount).Sum()</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <h5>Thank you for ordering from us!</h5>
+                                    <h3>Best regards</h3>
+                                    <h6>Your buddies at Bagtopia</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                @*<th>@Html.DisplayNameFor(model => model.Product.Brand)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Product.Model)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                                        <th>Action</th>*@
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @*@foreach (var item in Model)
+                                    {
+                                    <tr>
+                                    <td>
+                                    @item.Product.Brand.Name
+                                    </td>
+                                    <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Model)
+                                    </td>
+                                    <td>
+                                    @item.Quantity
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    </td>
+                                    </tr>
+                                    }*@
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

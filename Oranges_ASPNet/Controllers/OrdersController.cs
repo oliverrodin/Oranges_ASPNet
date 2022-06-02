@@ -32,6 +32,15 @@ namespace Oranges_ASPNet.Controllers
             return View(orders);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+
+            var order = await _orderService.GetOrderByIdAsync(id);
+
+                
+            return View(order);
+        }
+
         public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();

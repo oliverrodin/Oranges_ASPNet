@@ -27,6 +27,15 @@ namespace Oranges_ASPNet.Data.Services.OrderService
             return orders;
         }
 
+        public async Task<Order> GetOrderByIdAsync(int orderId)
+        {
+            var order = await _context.Orders.Include(o => o.OrderDetails).ThenInclude(od => od.Product)
+                .Include(o => o.User)
+                .ThenInclude(u => u.Address).FirstOrDefaultAsync(o => o.Id == orderId);
+
+            return order;
+        }
+
         public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAdress)
         {
             var order = new Order

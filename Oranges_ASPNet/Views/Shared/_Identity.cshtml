@@ -23,24 +23,22 @@ else
             Hello @userManager.GetUserName(User)
         </a>
         <div class="dropdown-menu back-color text-white" style="z-index: 100;"aria-labelledby="profile-btn">
-
-            <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                <i class="bi bi-list"></i> Orders
-            </a>
-            <a class="dropdown-item" asp-controller="User" asp-action="Index" asp-route-id="@userManager.GetUserId(User)">
-                <i class="bi bi-list"></i> Profile
-            </a>
-            <a class="dropdown-item" asp-controller="User" asp-action="AdminDashboard">
-                <i class="bi bi-list"></i> Dashboard
-            </a>
+            
+            @if (User.IsInRole("User"))
+            {
+                <a class="dropdown-item" asp-controller="User" asp-action="Index" asp-route-id="@userManager.GetUserId(User)">
+                    <i class="bi bi-list"></i> Profile
+                </a>
+            }
+            
+            
+            
 
             @if (User.IsInRole("Admin"))
             {
-
-                <a class="dropdown-item" asp-controller="Account" asp-action="Users">
-                    <i class="bi bi-people"></i> Users
+                <a class="dropdown-item" asp-controller="User" asp-action="AdminDashboard">
+                    <i class="bi bi-list"></i> Dashboard
                 </a>
-
             }
         </div>
     </li>
