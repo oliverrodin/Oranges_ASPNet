@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oranges_ASPNet.Data.Context;
 using Oranges_ASPNet.Models;
+using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Data.Services.BrandService
 {
@@ -23,14 +24,32 @@ namespace Oranges_ASPNet.Data.Services.BrandService
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, Brand brand)
+        public async Task UpdateAsync(int id, BrandViewModel brand)
         {
-            throw new NotImplementedException();
-        }
+            var item = await _context.Brands.FirstOrDefaultAsync(n => n.Id == brand.Id);
 
-        public Task DeleteAsync(int id)
+            if (item != null)
+            {
+                item.Id = brand.Id;
+                item.Name = brand.Name;
+                item.Country = brand.Country;
+                item.LogoUrl = brand.LogoUrl;
+                item.Address = brand.Address;
+
+                await _context.SaveChangesAsync();
+            }
+
+        }
+    
+
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var brand = await _context.Brands.FirstOrDefaultAsync(brand => brand.Id == id);
+            if (brand != null)
+            {
+                _context.Brands.Remove(brand);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
