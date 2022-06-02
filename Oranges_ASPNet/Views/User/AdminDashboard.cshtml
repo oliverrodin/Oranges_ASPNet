@@ -20,7 +20,21 @@
         }
         return count;
     }
+
+    decimal GetSumAmountToday()
+    {
+        decimal sum = 0;
+        var orders = Model.Orders.Where(o => o.OrderDate.Date == DateTime.Today.Date).ToList();
+
+        foreach (var order in orders)
+        {
+            sum += order.OrderDetails.Sum(o => o.Price);
+        }
+        return sum;
+    }
+
     
+
 }
 
 
@@ -84,27 +98,22 @@
                         <div class="card color--3">
                             <div class="card-body text-center text-uppercase" style="height: 14rem;">
                                 <h4>Todays effort</h4>
-                                <h1><i class="bi bi-cash-coin" style="font-size: 4rem;"></i></h1>
-                                <h1>@GetOrdersToday()</h1>
+                                <h1 class="mb-3"><i class="bi bi-cash-coin" style="font-size: 4rem;"></i></h1>
+                                <h3>$@GetSumAmountToday()</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 ">
-                        <div class="card color--2">
+                    <div class="col-4 ">
+                        <div class="card back-color-bottom">
                             <div class="card-body " style="height: 14rem;">
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 ">
-                        <div class="card color--1">
-                            <div class="card-body " style="height: 14rem;">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row ">
 
-                    <div class="col-8" style="height: 40rem; overflow: scroll;">
+                    <div class="col-8" style="height: 50rem; overflow: scroll;">
                         
                             <div class="card card-header color--4 p-3">
                                 <div>
@@ -139,7 +148,7 @@
                             </div>
                         
                     </div>
-                    <div class="col-4 " style="height: 40rem; overflow: scroll;">
+                    <div class="col-4 " style="height: 50rem; overflow: scroll;">
                         <div class=" card card-header color--6 p-3">
                             <div>
                                 <h4 class="text-body text-uppercase m-0">Products to refill</h4>

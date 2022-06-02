@@ -8,7 +8,8 @@ using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Controllers
 {
-
+    [Route("api/[controller]")]
+    [ApiController]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -22,6 +23,7 @@ namespace Oranges_ASPNet.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.Include(u => u.Address).ToListAsync();

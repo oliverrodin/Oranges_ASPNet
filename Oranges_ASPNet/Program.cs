@@ -69,6 +69,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 var app = builder.Build();
 
 app.UseSwaggerUI();
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

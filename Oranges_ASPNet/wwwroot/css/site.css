@@ -100,6 +100,12 @@ body {
     background-position: top;
 }
 
+.back-color-bottom {
+    background-image:  url(../Images/hero3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
 .main-body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
