@@ -23,6 +23,6 @@ public class Brand
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; } = string.Empty;
 
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<Product>? Products { get; set; }
     }
 }
