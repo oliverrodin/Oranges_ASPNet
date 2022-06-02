@@ -20,10 +20,66 @@ html {
         font-size: 16px;
     }
 }
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
 
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 html {
     position: relative;
     min-height: 100%;
+}
+
+.scroll-hidden {
+    
+}
+
+.color--1 {
+    opacity: 1;
+    background-color: #4d4d85;
+}
+
+.color--2 {
+    opacity: 1;
+    background-color: #616192;
+}
+
+.color--3 {
+    opacity: 1;
+    background-color: #7474a0;
+}
+
+.color--4 {
+    opacity: 1;
+    background-color: #8888ad;
+}
+
+.color--5 {
+    opacity: 1;
+    background-color: #9c9cbb;
+}
+
+.color--6 {
+    opacity: 1;
+    background-color: #b0b0c9;
+}
+
+.color--7 {
+    opacity: 1;
+    background-color: #c4c4d6;
+}
+
+.color--8 {
+    opacity: 1;
+    background-color: #d7d7e4;
 }
 
 body {

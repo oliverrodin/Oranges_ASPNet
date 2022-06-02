@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Oranges_ASPNet.Data.Services;
 using Oranges_ASPNet.Data.Services.ProductService;
+using Oranges_ASPNet.Data.Services.ProductStockService;
 using Oranges_ASPNet.Data.Services.UserService;
 using Oranges_ASPNet.Models.ViewModel;
 
@@ -12,12 +13,14 @@ namespace Oranges_ASPNet.Controllers
         private readonly IUserService _userService;
         private readonly IOrdersService _ordersService;
         private readonly IProductService _productService;
+        private readonly IProductStockService _stockService;
 
-        public UserController(IUserService userService, IOrdersService ordersService, IProductService productService)
+        public UserController(IUserService userService, IOrdersService ordersService, IProductService productService, IProductStockService stockService)
         {
             _userService = userService;
             _ordersService = ordersService;
             _productService = productService;
+            _stockService = stockService;
         }
         public async Task<IActionResult> Index(string id)
         {
@@ -40,6 +43,8 @@ namespace Oranges_ASPNet.Controllers
                 User.FindFirstValue(ClaimTypes.NameIdentifier), User.FindFirstValue(ClaimTypes.Role));
             data.Products = await _productService.GetAllProductsAsync();
             data.ApplicationUsers = await _userService.GetAllUsersAsync();
+            data.Stocks = await _stockService.GetAllProductStocksAsync();
+
             return View(data);
         }
     }
