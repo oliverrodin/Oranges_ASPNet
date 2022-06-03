@@ -46,5 +46,15 @@ namespace Oranges_ASPNet.Data.Services.CampaignService
             await _context.Campaigns.AddAsync(response);
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var campaing = await _context.Campaigns.FirstOrDefaultAsync(x => x.Id == id);
+            if (campaing != null)
+            {
+                _context.Campaigns.Remove(campaing);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

@@ -47,5 +47,43 @@ namespace Oranges_ASPNet.Controllers
 
             return View(data);
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _userService.GetAddressByIdAsync(id);
+            if (user == null)
+            {
+                return View("NotFound");
+            }
+
+            var response = new UserViewModel()
+            {
+                Street = user.Street,
+                State = user.State,
+                City = user.City,
+                Country = user.Country,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Zip = user.Zip,
+                Id = user.AddressId,
+            };
+            return View(response);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, UserViewModel user)
+        {
+            if (id != user.Id)
+            {
+                return View("NotFound");
+            }
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+            await _userService.UpdateAsync(id, user);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using Oranges_ASPNet.Models.ViewModel;
 
 namespace Oranges_ASPNet.Controllers
 {
-    
+
     [Authorize]
     public class CampaignController : Controller
     {
@@ -20,6 +20,10 @@ namespace Oranges_ASPNet.Controllers
             _productService = productService;
         }
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Edit()
         {
             return View();
         }
@@ -50,5 +54,29 @@ namespace Oranges_ASPNet.Controllers
 
             return RedirectToAction("List");
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var campaign = await _campaignService.GetCampaignByIdAsync(id);
+            if (campaign == null)
+                return View("NotFound");
+
+            return View(campaign);
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var campaign = await _campaignService.GetCampaignByIdAsync(id);
+            if (campaign != null)
+            {
+                await _campaignService.DeleteAsync(id);
+                return RedirectToAction("List");
+            }
+            return View("NotFound");
+
+        }
+
     }
 }

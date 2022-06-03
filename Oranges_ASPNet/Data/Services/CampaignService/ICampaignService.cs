@@ -8,5 +8,7 @@ namespace Oranges_ASPNet.Data.Services.CampaignService
         Task<List<ProductCampaign>> GetAllCampaignsAsync();
         Task<ProductCampaign> GetCampaignByIdAsync(int id);
         Task AddAsync(int id, NewCampaignViewModel campaign);
+
+        Task DeleteAsync(int id);
     }
 }
